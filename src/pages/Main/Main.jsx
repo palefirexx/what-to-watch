@@ -9,13 +9,12 @@ import {
 } from '../../widgets'
 import { usePromoFilm } from '../../hooks'
 import { UserBlock } from '../../components'
-import { routes } from '../../app/const'
 
 
 const Main = () => {
 	const [promoId, film] = usePromoFilm()
-
-	return film && (
+	
+	return promoId && (
 		<>
 			<FilmCard >
 				<CardHeader

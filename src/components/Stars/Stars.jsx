@@ -4,7 +4,6 @@ import styles from './Stars.module.css'
 
 
 export const Stars = memo(({ quantity = 5, setReviewRating, reviewRating }) => {
-
     const starList = useMemo(() => getStarList(quantity), [quantity])
 
     return (

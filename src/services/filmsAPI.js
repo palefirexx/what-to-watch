@@ -38,7 +38,7 @@ export const filmsAPI = createApi({
             }),
             providesTags: () => ['Films'],
         }),
-        fetchFilmsFromMyList: build.query({
+        fetchFilmsFromIdList: build.query({
             query: (idList) => ({
                 url: `films?id=${idList}`,
                 // url: `films/films?id=${idList}`,
@@ -98,32 +98,6 @@ export const filmsAPI = createApi({
             }),
             invalidatesTags: ['Films'],
         })
-
-        // createPost: build.mutation({
-        // query: (post) => ({
-        //     url: '/posts',
-        //     method: 'POST',
-        //     body: post
-        // }),
-        // invalidatesTags: ['Test']
-        // }),
-        // updatePost: build.mutation({
-        //     query: (post) => ({
-        //         url: `/posts/${post.id}`,
-        //         method: 'PUT',
-        //         body: post
-        //     }),
-        //     invalidatesTags: ['Test']
-        // }),
-        // deletePost: build.mutation({
-        //     query: (post) => ({
-        //         url: `/posts/${post.id}`,
-        //         method: 'DELETE'
-        //     }),
-        //     invalidatesTags: ['Test']
-        // }),
-
-
     })
 })
 
@@ -137,6 +111,6 @@ export const {
     useFetchPromoFilmQuery,
     useAddMyListItemMutation,
     useDeleteMyListItemMutation,
-    useFetchFilmsFromMyListQuery,
+    useFetchFilmsFromIdListQuery,
     useAddReviewMutation,
 } = filmsAPI

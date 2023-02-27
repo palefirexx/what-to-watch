@@ -1,12 +1,13 @@
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
 import { genres } from '../../app/const'
-import { useFetchAllFilmsQuery, useFetchFilmsFromMyListQuery } from '../../services/filmsAPI'
+import { useFetchAllFilmsQuery, useFetchFilmsFromIdListQuery } from '../../services/filmsAPI'
 import { FilmCardSmall, GenresNav } from '../../components'
 import { BtnBorder } from '../../ui'
 import styles from './Catalog.module.css'
 
 
-export const Catalog = memo(({ genre = 'All genres', size, title, hiddenTitle, genresNav, idPromoFilm, myList, showMore, handleToggleMyList }) => {
+export const Catalog = memo(({ genre = 'All genres', size = 4, title = 'Catalog', hiddenTitle, genresNav, idPromoFilm, myList, handleToggleMyList, showMore }) => {
+	console.log('Catalog')
 	const [activeGenre, setActiveGenre] = useState(genre)
 	const [page, setPage] = useState(1)
 	const [films, setFilms] = useState([])
@@ -19,7 +20,7 @@ export const Catalog = memo(({ genre = 'All genres', size, title, hiddenTitle, g
 	}), [page, activeGenre, size, idPromoFilm])
 
 	let { list, totalCount } = myList
-		? useFetchFilmsFromMyListQuery(myList?.join('&id='), {
+		? useFetchFilmsFromIdListQuery(myList?.join('&id='), {
 			selectFromResult: ({ data }) => ({
 				list: data?.response,
 				totalCount: data?.totalCount,
@@ -44,7 +45,7 @@ export const Catalog = memo(({ genre = 'All genres', size, title, hiddenTitle, g
 			: list && setFilms((prev) => [...prev, ...list])
 	}, [list])
 
-	const toNextPage = useCallback(() => setPage((prev) => prev + 1), [])
+	const toNextPage = useCallback(() => setPage((prev) => ++prev), [])
 
 	const deleteItem = useCallback((film) => {
 		handleToggleMyList(film)
