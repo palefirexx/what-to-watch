@@ -13,3 +13,14 @@ export const getRatingLevel = (score) => {
     else if (score < 10) return 'Very good'
     else if (score == 10) return 'Avesome'
 }
+
+export const getStarList = (listSize) => {
+    const res = []
+    let size = listSize
+    while (size) {
+        res.push(size)
+        size--
+    }
+
+    return res
+}

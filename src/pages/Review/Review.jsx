@@ -1,5 +1,5 @@
-import { Header, FilmCard, CardHeader } from '../../widgets'
-import { Breadcrumbs, FormReview, Poster, UserBlock } from '../../components'
+import { Header, FilmCard, CardHeader, FormReview } from '../../widgets'
+import { Breadcrumbs, Poster, UserBlock } from '../../components'
 import { usePromoFilm } from '../../hooks'
 
 

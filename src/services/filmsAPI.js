@@ -2,7 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
 
 // const BACKEND_URL = 'https://firestore.googleapis.com/v1/projects/what-to-watch-e80a0/databases/(default)/documents/films/'
 const BACKEND_URL = 'http://localhost:8080/'
-// const BACKEND_URL = 'https://my-json-server.typicode.com/palefirexx/'
 const REQUEST_TIMEOUR = 5000
 
 

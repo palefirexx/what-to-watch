@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { useAddReviewMutation } from '../../services/filmsAPI'
+import { Stars } from '../../components'
 import styles from './Form-review.module.css'
 
 
@@ -13,8 +14,6 @@ export const FormReview = () => {
     const [reviewText, setReviewText] = useState('')
 
     const [addReview] = useAddReviewMutation()
-
-    const starList = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
     const handleSubmit = (evt) => {
         evt.preventDefault()
@@ -44,24 +43,7 @@ export const FormReview = () => {
     return (
         <div className={styles.review}>
             <form onSubmit={handleSubmit}>
-                <div className={styles.stars}>
-                    {starList.map((star) =>
-                        <span key={star}>
-                            <input
-                                className={styles.input}
-                                id={`star-${star}`}
-                                type='radio'
-                                name='rating'
-                                onChange={() => setReviewRating(star + '')}
-                                value={star} />
-                            <label
-                                className={`${styles.label} ${star <= reviewRating && styles.check}`}
-                                htmlFor={`star-${star}`}
-                            >Rating {star}</label>
-                        </span>
-                    )}
-                </div>
-
+                <Stars quantity={10} reviewRating={reviewRating} setReviewRating={setReviewRating} />
                 <div className={styles.text}>
                     <textarea value={reviewText} onChange={handleChangeText} className={styles.textarea} name='review-text' id='review-text' placeholder='Review text'></textarea>
                     <div className={styles.submit}>
