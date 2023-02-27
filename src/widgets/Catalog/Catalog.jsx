@@ -7,7 +7,6 @@ import styles from './Catalog.module.css'
 
 
 export const Catalog = memo(({ genre = 'All genres', size = 4, title = 'Catalog', hiddenTitle, genresNav, idPromoFilm, myList, handleToggleMyList, showMore }) => {
-	console.log('Catalog')
 	const [activeGenre, setActiveGenre] = useState(genre)
 	const [page, setPage] = useState(1)
 	const [films, setFilms] = useState([])
